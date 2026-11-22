@@ -2,9 +2,47 @@
 
 Curated list of open-weight uncensored models for authorized red team operations, penetration testing, and security research.
 
-> All data sourced from HuggingFace model cards and official publications. Sep 2026.
+> All data sourced from HuggingFace model cards and official publications. Sep 2026. Thinking column researched Nov 2026.
 
 <img width="4000" height="1568" alt="offsec-benchmark-v3" src="https://github.com/user-attachments/assets/3a0e3514-6805-4cf5-8400-628178df538c" />
+
+---
+
+## Quick Reference
+
+Sorted by total parameter size (largest first). The `#` column matches the numbered model sections below.
+
+**Legend:** 🟩 Yes · 🟥 No · ✱ = Thinking status inherited from the base model's card, not confirmed on the fine-tune's own card.
+
+| # | Model | Params | Context | VRAM | Method | Vision | Tools | Thinking | License |
+|---|-------|--------|---------|------|--------|--------|-------|----------|---------|
+| 19 | GLM-5.3-CYBER | 753B | ~131K | 8xH200 | Weight modification | 🟥 No | 🟩 Yes | 🟩 Yes ✱ | MIT |
+| 20 | DS-V4.1-Flash | MoE (base: 552B) | base | ~1.1 GB overlay | Abliteration overlay | 🟩 Yes | 🟩 Yes | 🟩 Yes | MIT |
+| 18 | GLM-5.3-Flash | 320B/18B | 1M | ~80 GB+ | Abliteration | 🟩 Yes | 🟩 Yes | 🟩 Yes | MIT |
+| 4 | CYBER-FROST | ~180B MoE | 262K | Multi-GPU | Security FT | 🟥 No | 🟩 Yes | 🟩 Yes ✱ | Qwen CL |
+| 13 | RavenX-CyberAgent | 36B/3B MoE | 262K | ~24 GB | SFT 745K, 12 rounds | 🟥 No | 🟩 Yes | 🟩 Yes ✱ | Apache 2.0 |
+| 9 | Imperum | 34B/3B MoE | 16K | ~22 GB | SFT 10+ domains | 🟥 No | 🟩 Yes | 🟩 Yes ✱ | Apache 2.0 |
+| 1 | DeepHat V2 | 7B/32B | 131K | ~6 GB | SFT 1.7M samples | 🟥 No | 🟩 Yes | 🟥 No ✱ | Apache 2.0 |
+| 22 | Qwen2.5-Coder-32B | 32B | 128K | ~20 GB | Abliteration | 🟥 No | 🟥 No | 🟥 No | Apache 2.0 |
+| 24 | HIDra-30B-A3B | 30B/3B | 128K | ~20 GB | Abliteration | 🟥 No | 🟩 Yes | 🟥 No | Apache 2.0 |
+| 3 | BugTraceAI Ultra | 27B | 4K | ~22 GB | SFT Unsloth | 🟥 No | 🟩 Yes | 🟩 Yes | Apache 2.0 |
+| 17 | Qwen3.8-27B | 27B | 262K | ~18 GB | Abliteration 131 mat | 🟩 Yes | 🟩 Yes | 🟩 Yes | Apache 2.0 |
+| 21 | Huihui-Qwen3.5 | 27B | 128K | ~18 GB | Abliteration | 🟥 No | 🟩 Yes | 🟩 Yes ✱ | Apache 2.0 |
+| 23 | Qwen3.8-Cyber | 27B | 262K | ~18 GB | Abliteration+cyber | 🟩 Yes | 🟩 Yes | 🟩 Yes ✱ | Apache 2.0 |
+| 2 | BugTrace Apex | 26B MoE | 32K | ~16 GB | SFT HackerOne | 🟥 No | 🟩 Yes | 🟩 Yes | Apache 2.0 |
+| 14 | REDCELL-26B | 26B/4B MoE | 262K | ~12 GB | LoRA 6.5K OSINT | 🟥 No | 🟥 No | 🟩 Yes ✱ | Apache 2.0 |
+| 5 | CyberPal 2.0 | 20B | 8K | ~42 GB | SFT 403K | 🟥 No | 🟥 No | 🟩 Yes ✱ | Apache 2.0 |
+| 27 | Wizard-Vicuna-13B | 13B | 2K | ~10 GB | Data filtering | 🟥 No | 🟥 No | 🟥 No | Other |
+| 7 | Cyber-Ornith | 9B | 128K | ~7 GB | Obliteration | 🟥 No | 🟩 Yes | 🟩 Yes ✱ | Apache 2.0 |
+| 12 | Qwythos-9B | 9B | 1M | ~7 GB | Post-train 500M tok | 🟩 Yes | 🟩 Yes | 🟩 Yes | Apache 2.0 |
+| 8 | Dolphin3-Cyber | 8B | 2K/131K | ~6 GB | LoRA on Dolphin3 | 🟥 No | 🟥 No | 🟥 No | Llama 3.1 |
+| 11 | pentest-v2 | 8B | 32K | ~6 GB | LoRA 2.8K | 🟥 No | 🟥 No | 🟩 Yes ✱ | Apache 2.0 |
+| 26 | Dolphin-Llama3 | 8B | 8K | ~6 GB | Data filtering | 🟥 No | 🟥 No | 🟥 No | Llama 3 |
+| 10 | Lily-Cyber | 7B | 8K | ~6 GB | SFT 22K pairs | 🟥 No | 🟥 No | 🟥 No | Apache 2.0 |
+| 15 | VEXT Pentest-7B | 7B | 8K | ~6 GB | QLoRA SFT+DPO | 🟥 No | 🟥 No | 🟥 No | Apache 2.0 |
+| 25 | qwen25_UNCENSORED | ~7B | 32K | ~6 GB | Progressive FT | 🟥 No | 🟥 No | 🟥 No | Apache 2.0 |
+| 6 | Cyber-Prime 1.1 | 2.6B | N/A | ~6 GB | SFT+RL 75K | 🟥 No | 🟥 No | 🟩 Yes | LFM Open |
+| 16 | security-slm | 1.5B | 32K | ~2 GB | Unsloth SFT | 🟥 No | 🟥 No | 🟥 No | Apache 2.0 |
 
 ---
 
@@ -20,8 +58,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | VRAM (Q4_K_M) | ~6 GB |
 | Uncensoring Method | SFT on 1.7M offensive/defensive samples |
 | Training Data | 1.7M security-specific samples (USENIX Security 2024 workshop) |
-| Vision | No |
-| Tool Calling | Yes |
+| Vision | 🟥 No |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟥 No ✱ |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/WhiteRabbitNeo](https://huggingface.co/WhiteRabbitNeo)
@@ -38,8 +77,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | VRAM (Q4_K_M) | ~16 GB |
 | Uncensoring Method | SFT on HackerOne Hacktivity 2024-2025 |
 | Training Data | HackerOne reports + WAF evasion dataset |
-| Vision | No |
-| Tool Calling | Yes |
+| Vision | 🟥 No |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes (forced `<thinking>` block before output) |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/BugTraceAI/BugTraceAI-CORE-Apex-26b](https://huggingface.co/BugTraceAI/BugTraceAI-CORE-Apex-26b)
@@ -57,8 +97,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Uncensoring Method | SFT via Unsloth on bug bounty + CVE data |
 | Training Data | 2,541 examples from bug bounty disclosures, CVE writeups, and security research (2024-2026) |
 | Specialization | Tooling model: generates Nuclei templates, CVE PoCs, exploit code, pentest scripts |
-| Vision | No |
-| Tool Calling | Yes |
+| Vision | 🟥 No |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes (built on a "Thinking" fine-tune base) |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/BugTraceAI/BugTraceAI-CORE-Ultra-27B-Q6](https://huggingface.co/BugTraceAI/BugTraceAI-CORE-Ultra-27B-Q6)
@@ -77,8 +118,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Uncensoring Method | Security-domain fine-tuning on proprietary Blackfrost-AI corpus |
 | Training Data | Proprietary security corpus: recon, web app security, vuln research, malware analysis, cloud security, threat intel |
 | MTP | Yes (1 native MTP layer for speculative decoding) |
-| Vision | No |
-| Tool Calling | Yes |
+| Vision | 🟥 No |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes ✱ |
 | License | Qwen Community License 1.0 |
 
 **Download:** [https://huggingface.co/Blackfrost-AI/CYBER-FROST-3.8-BF16](https://huggingface.co/Blackfrost-AI/CYBER-FROST-3.8-BF16)
@@ -96,8 +138,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Uncensoring Method | SFT on SecKnowledge 2.0 pipeline |
 | Training Data | 403K examples via expert-in-the-loop schema steering, multi-step grounding, LLM quality checks |
 | Specialization | Defensive: CTI, vuln analysis, detection/mitigation, SOC/IR, AppSec, compliance |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟩 Yes ✱ (trained on short + long reasoning traces; no explicit on/off switch documented) |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/cyber-pal-security/CyberPal2.0-20B](https://huggingface.co/cyber-pal-security/CyberPal2.0-20B)
@@ -118,8 +161,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Operating Modes | Direct mode (classification) + Think mode (chain-of-thought) |
 | CyberBench Average | 0.592 F1/Acc (up from 0.501 in v1.0) |
 | CyberBench Highlights | NER 0.499, Phishing 0.890, HTTP Attack 0.628 |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟩 Yes (optional Think mode) |
 | License | LFM Open License v1.0 |
 
 **Download:** [https://huggingface.co/Akahsizrr/Cyber-Prime-1.1-2.6B](https://huggingface.co/Akahsizrr/Cyber-Prime-1.1-2.6B)
@@ -138,8 +182,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Training Data | NousResearch/hermes-function-calling-v1, OpenThoughts3-1.2M, openhands-synthetic-conversations |
 | Specialization | Agentic cybersecurity: function-calling, tool-use, reasoning, CLI/terminal automation |
 | Format | GGUF (IQ1_S to Q6_K available) |
-| Vision | No |
-| Tool Calling | Yes |
+| Vision | 🟥 No |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes ✱ (Qwen 3.5 architecture; trained on OpenThoughts3 reasoning data) |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/mradermacher/Cyber-Ornith-1.5-9B-OBLITERATED-i1-GGUF](https://huggingface.co/mradermacher/Cyber-Ornith-1.5-9B-OBLITERATED-i1-GGUF)
@@ -158,8 +203,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Training Data | Cybersecurity-specific: pentest, vuln analysis, exploit dev, incident response |
 | Architecture | LlamaForCausalLM, 32 layers, GQA (32 heads, 8 KV heads) |
 | Performance | 5 tok/s (CPU) to 55 tok/s (RTX 4060) |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟥 No |
 | License | Llama 3.1 |
 
 **Download:** [https://huggingface.co/RavichandranJ/Dolphin3-Cyber-8B-GGUF](https://huggingface.co/RavichandranJ/Dolphin3-Cyber-8B-GGUF)
@@ -177,8 +223,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Architecture | Qwen3.5-MoE, 40 layers, hybrid linear + full attention |
 | Uncensoring Method | SFT across 10+ security domains |
 | Training Data | SOC/SIEM operations, detection engineering, DFIR, malware analysis, threat intel, vuln management, cloud/K8s/IAM, OT security, GRC, authorized pentesting |
-| Vision | No |
-| Tool Calling | Yes |
+| Vision | 🟥 No |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes ✱ |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/IMPERUM/Imperum-CybersecurityLLM-v1.0-GGUF](https://huggingface.co/IMPERUM/Imperum-CybersecurityLLM-v1.0-GGUF)
@@ -196,8 +243,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Uncensoring Method | SFT on 22K cybersecurity pairs |
 | Training Data | 22,000 hand-crafted cybersecurity data pairs across 28+ domains: pentesting, malware analysis, IR, cloud security |
 | Training Hardware | Single A100, 24h, 5 epochs |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟥 No |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/segolilylabs/Lily-Cybersecurity-7B-v0.2](https://huggingface.co/segolilylabs/Lily-Cybersecurity-7B-v0.2)
@@ -215,8 +263,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Uncensoring Method | LoRA r=4, 2,804 curated samples |
 | Training Data | GTFOBins, HackTricks, HackTheBox writeups |
 | GTFOBins Accuracy | 100% (vs 25% base model zero-shot) |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟩 Yes ✱ (Qwen3 hybrid thinking, inherited from base) |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/gewsefa/pentest-v2](https://huggingface.co/gewsefa/pentest-v2)
@@ -236,8 +285,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Native Function Calling | Yes (Qwen3.5 spec) |
 | Chain-of-Thought | Always-on `<think>` block |
 | Variants | Base (SFT), Claude-Mythos-5-1M-GGUF (Q4_K_M to BF16) |
-| Vision | Yes (inherited vision tower) |
-| Tool Calling | Yes |
+| Vision | 🟩 Yes (inherited vision tower) |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes |
 | License | Apache 2.0 |
 
 **Download (base):** [https://huggingface.co/emperorai/Qwythos-9B](https://huggingface.co/emperorai/Qwythos-9B)  
@@ -258,8 +308,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Specialization | RATH protocol: Attack Surface, Exploit, Impact, Remediation, Document, Prevent |
 | Output Format | CVSS scores, CWE identifiers, MITRE ATT&CK mappings |
 | Inference Speed | 89 tok/s generation, 900 tok/s prompt processing |
-| Vision | No |
-| Tool Calling | Yes |
+| Vision | 🟥 No |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes ✱ |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/deadbydawn101/RavenX-CyberAgent-Qwen3.6-35B-A3B-Opus-4.7-OpenMythos-Pentester-BugHunter-RATH-GGUF](https://huggingface.co/deadbydawn101/RavenX-CyberAgent-Qwen3.6-35B-A3B-Opus-4.7-OpenMythos-Pentester-BugHunter-RATH-GGUF)
@@ -279,8 +330,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Training Data | Cyber threat intelligence, investigative journalism, counter-disinformation, analytical methodology |
 | Specialization | OSINT: threat actor attribution, IoC pivoting, geolocation analysis, Admiralty source credibility, vulnerability contextualization |
 | APEX Quantization | Domain-weighted imatrix (~70% REDCELL corpus, ~30% general calibration) |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟩 Yes ✱ (Gemma 4 26B supports an optional thinking mode) |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/terrorswift/REDCELL-26B-A4B-OSINT-Cyber-APEX-GGUF](https://huggingface.co/terrorswift/REDCELL-26B-A4B-OSINT-Cyber-APEX-GGUF)
@@ -297,8 +349,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | VRAM (Q4_K_M) | ~6 GB |
 | Uncensoring Method | QLoRA SFT + DPO on pentest traces |
 | Training Data | Pentest methodology, tool usage, reporting |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟥 No |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/vextechnologies/VEXT-Pentest-7B](https://huggingface.co/vextechnologies/VEXT-Pentest-7B)
@@ -315,8 +368,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | VRAM (Q4_K_M) | ~2 GB |
 | Uncensoring Method | Unsloth SFT on security Q&A |
 | Training Data | Security knowledge base, CTF-style |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟥 No |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/AbdullahMujtaba/security-slm-unsloth-1.5b](https://huggingface.co/AbdullahMujtaba/security-slm-unsloth-1.5b)
@@ -335,8 +389,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | VRAM (Q4_K_M) | ~18 GB |
 | Uncensoring Method | Abliteration (131 matrices, Arditi et al. 2024) |
 | Intelligence Index | 52 (Artificial Analysis) |
-| Vision | Yes |
-| Tool Calling | Yes |
+| Vision | 🟩 Yes |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes (on by default, can be disabled per request) |
 | License | Apache 2.0 |
 | HF Downloads | 230K+ |
 | HF Likes | 257+ |
@@ -357,8 +412,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Uncensoring Method | Abliteration (layer 22/45, deeper refusal mechanism) |
 | Compliance Rate | 82.8% (OrcaRouter testing) |
 | MTP | Yes (Multi-Token Prediction preserved) |
-| Vision | Yes + Video |
-| Tool Calling | Yes |
+| Vision | 🟩 Yes + Video |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes (always on in the base model; effort is tunable) |
 | License | MIT |
 
 **Download:** [https://huggingface.co/orcarouter/GLM-5.3-Flash-Uncensored-FP8](https://huggingface.co/orcarouter/GLM-5.3-Flash-Uncensored-FP8)
@@ -376,8 +432,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Architecture | 78 layers, text-only, routed FP8 experts |
 | Uncensoring Method | Direct weight modification for offensive-security, red-team, exploit-dev, RE, evasion, phishing, credential-attack, malware-analysis |
 | Notes | Not abliteration or LoRA; direct bf16 residual writer editing. Soft refusal on copyright reproduction retained |
-| Vision | No (text-only) |
-| Tool Calling | Yes |
+| Vision | 🟥 No (text-only) |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes ✱ |
 | License | MIT |
 
 **Download:** [https://huggingface.co/dealignai/GLM-5.3-CYBERSECURITY-FP8](https://huggingface.co/dealignai/GLM-5.3-CYBERSECURITY-FP8)
@@ -389,14 +446,15 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Spec | Value |
 |------|-------|
 | Base Model | DeepSeek-V4.1-Flash |
-| Parameters | MoE (size matches base) |
+| Parameters | MoE (size matches base; base model is 552B total) |
 | Context Length | Matches base DeepSeek-V4.1-Flash |
 | Uncensoring Method | Abliteration overlay on layers 10-35 attention projection (wo_b); layers 0-9, 36-39, expert layers, vision components unchanged |
 | Format | Modular overlay (not standalone checkpoint): FP8 (~1.1 GB) or EXL3 mul1 K=5 (~651 MB) |
 | Deployment | Apply on top of existing quantized base packs (native, EXL3, TR3-Hybrid) |
 | GPU Util | <= 0.85 recommended |
-| Vision | Yes (preserved) |
-| Tool Calling | Yes |
+| Vision | 🟩 Yes (preserved) |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes (base supports thinking mode with numeric reasoning effort) |
 | License | MIT |
 
 **Download:** [https://huggingface.co/drowzeys/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed](https://huggingface.co/drowzeys/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed)
@@ -412,8 +470,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Context Length | 128K |
 | VRAM (Q4_K_M) | ~18 GB |
 | Uncensoring Method | Abliteration |
-| Vision | No |
-| Tool Calling | Yes |
+| Vision | 🟥 No |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes ✱ (Qwen3.5 thinks by default) |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/huihui-ai/Qwen3.5-27B-abliterated](https://huggingface.co/huihui-ai/Qwen3.5-27B-abliterated)
@@ -429,8 +488,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Context Length | 128K |
 | VRAM (Q4_K_M) | ~20 GB |
 | Uncensoring Method | Abliteration |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟥 No |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/huihui-ai/Qwen2.5-Coder-32B-Instruct-abliterated](https://huggingface.co/huihui-ai/Qwen2.5-Coder-32B-Instruct-abliterated)
@@ -446,8 +506,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Context Length | 262K |
 | VRAM (Q4_K_M) | ~18 GB |
 | Uncensoring Method | Abliteration + cyber agentic fine-tune |
-| Vision | Yes |
-| Tool Calling | Yes |
+| Vision | 🟩 Yes |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟩 Yes ✱ (Qwen3.8 thinking is on by default) |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) (base, community abliterated variants available)
@@ -463,8 +524,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Context Length | 128K |
 | VRAM (Q4_K_M) | ~20 GB |
 | Uncensoring Method | Abliteration |
-| Vision | No |
-| Tool Calling | Yes |
+| Vision | 🟥 No |
+| Tool Calling | 🟩 Yes |
+| Thinking | 🟥 No (Qwen3-Coder is a non-thinking model) |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/huihui-ai/Qwen3-Coder-30B-A3B-abliterated](https://huggingface.co/huihui-ai/Qwen3-Coder-30B-A3B-abliterated)
@@ -480,8 +542,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | Context Length | 32K |
 | VRAM (Q4_K_M) | ~6 GB |
 | Uncensoring Method | Progressive fine-tuning (multi-stage) |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟥 No |
 | License | Apache 2.0 |
 
 **Download:** [https://huggingface.co/models?search=qwen25_UNCENSORED](https://huggingface.co/models?search=qwen25_UNCENSORED)
@@ -500,8 +563,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | VRAM (Q4_K_M) | ~6 GB |
 | Uncensoring Method | Data filtering (Dolphin method, Eric Hartford) |
 | Training Data | Dolphin dataset (alignment/refusal responses removed) |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟥 No |
 | License | Llama 3 Community |
 
 **Download:** [https://huggingface.co/cognitivecomputations/dolphin-2.9.3-llama-3-8b](https://huggingface.co/cognitivecomputations/dolphin-2.9.3-llama-3-8b)
@@ -520,8 +584,9 @@ Curated list of open-weight uncensored models for authorized red team operations
 | MMLU | 47.92 (Open LLM Leaderboard) |
 | HellaSwag | 81.95 (Open LLM Leaderboard) |
 | TruthfulQA | 51.69 (Open LLM Leaderboard) |
-| Vision | No |
-| Tool Calling | No |
+| Vision | 🟥 No |
+| Tool Calling | 🟥 No |
+| Thinking | 🟥 No |
 | License | Other |
 | HF Likes | 323 |
 
@@ -559,44 +624,11 @@ Curated list of open-weight uncensored models for authorized red team operations
 
 ---
 
-## Quick Reference
-
-| # | Model | Params | Context | VRAM | Method | Vision | Tools | License |
-|---|-------|--------|---------|------|--------|--------|-------|---------|
-| 1 | DeepHat V2 | 7B/32B | 131K | ~6 GB | SFT 1.7M samples | No | Yes | Apache 2.0 |
-| 2 | BugTrace Apex | 26B MoE | 32K | ~16 GB | SFT HackerOne | No | Yes | Apache 2.0 |
-| 3 | BugTraceAI Ultra | 27B | 4K | ~22 GB | SFT Unsloth | No | Yes | Apache 2.0 |
-| 4 | CYBER-FROST | ~180B MoE | 262K | Multi-GPU | Security FT | No | Yes | Qwen CL |
-| 5 | CyberPal 2.0 | 20B | 8K | ~42 GB | SFT 403K | No | No | Apache 2.0 |
-| 6 | Cyber-Prime 1.1 | 2.6B | N/A | ~6 GB | SFT+RL 75K | No | No | LFM Open |
-| 7 | Cyber-Ornith | 9B | 128K | ~7 GB | Obliteration | No | Yes | Apache 2.0 |
-| 8 | Dolphin3-Cyber | 8B | 2K/131K | ~6 GB | LoRA on Dolphin3 | No | No | Llama 3.1 |
-| 9 | Imperum | 34B/3B MoE | 16K | ~22 GB | SFT 10+ domains | No | Yes | Apache 2.0 |
-| 10 | Lily-Cyber | 7B | 8K | ~6 GB | SFT 22K pairs | No | No | Apache 2.0 |
-| 11 | pentest-v2 | 8B | 32K | ~6 GB | LoRA 2.8K | No | No | Apache 2.0 |
-| 12 | Qwythos-9B | 9B | 1M | ~7 GB | Post-train 500M tok | Yes | Yes | Apache 2.0 |
-| 13 | RavenX-CyberAgent | 36B/3B MoE | 262K | ~24 GB | SFT 745K, 12 rounds | No | Yes | Apache 2.0 |
-| 14 | REDCELL-26B | 26B/4B MoE | 262K | ~12 GB | LoRA 6.5K OSINT | No | No | Apache 2.0 |
-| 15 | VEXT Pentest-7B | 7B | 8K | ~6 GB | QLoRA SFT+DPO | No | No | Apache 2.0 |
-| 16 | security-slm | 1.5B | 32K | ~2 GB | Unsloth SFT | No | No | Apache 2.0 |
-| 17 | Qwen3.8-27B | 27B | 262K | ~18 GB | Abliteration 131 mat | Yes | Yes | Apache 2.0 |
-| 18 | GLM-5.3-Flash | 320B/18B | 1M | ~80 GB+ | Abliteration | Yes | Yes | MIT |
-| 19 | GLM-5.3-CYBER | 753B | ~131K | 8xH200 | Weight modification | No | Yes | MIT |
-| 20 | DS-V4.1-Flash | MoE | base | ~1.1 GB overlay | Abliteration overlay | Yes | Yes | MIT |
-| 21 | Huihui-Qwen3.5 | 27B | 128K | ~18 GB | Abliteration | No | Yes | Apache 2.0 |
-| 22 | Qwen2.5-Coder-32B | 32B | 128K | ~20 GB | Abliteration | No | No | Apache 2.0 |
-| 23 | Qwen3.8-Cyber | 27B | 262K | ~18 GB | Abliteration+cyber | Yes | Yes | Apache 2.0 |
-| 24 | HIDra-30B-A3B | 30B/3B | 128K | ~20 GB | Abliteration | No | Yes | Apache 2.0 |
-| 25 | qwen25_UNCENSORED | ~7B | 32K | ~6 GB | Progressive FT | No | No | Apache 2.0 |
-| 26 | Dolphin-Llama3 | 8B | 8K | ~6 GB | Data filtering | No | No | Llama 3 |
-| 27 | Wizard-Vicuna-13B | 13B | 2K | ~10 GB | Data filtering | No | No | Other |
-
----
-
 ## Glossary
 
 - **Abliteration**: Weight-level intervention (Arditi et al. 2024) that orthogonalizes the refusal direction out of the residual stream, removing alignment constraints without retraining
 - **Obliteration**: Variant of abliteration with similar weight-intervention approach
+- **Thinking**: Model can produce an explicit reasoning (chain-of-thought) block before its final answer. Some models always think, others expose an on/off switch or effort level
 - **SFT**: Supervised Fine-Tuning on domain-specific data
 - **QLoRA**: Quantized Low-Rank Adaptation, memory-efficient fine-tuning
 - **DPO**: Direct Preference Optimization
@@ -643,6 +675,7 @@ Curated list of open-weight uncensored models for authorized red team operations
 - Featherless AI ([featherless.ai](https://featherless.ai))
 - OrcaRouter ([orcarouter.ai](https://www.orcarouter.ai))
 - Reddit r/LocalLLaMA, r/netsec community reports
+- Thinking column: Qwen3.5 / Qwen3.6 / Qwen3.8, Gemma 4, GLM-5.3-Flash, DeepSeek-V4.1-Flash, BugTraceAI Apex and CyberPal 2.0 model cards
 
 ---
 
